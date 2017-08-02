@@ -50,6 +50,51 @@ var EventUtil ={
         }else{
             event.cancelBubble= true;
         }
+    },
+    //相关元素 relatedTarget
+    getRelatedTarget : function (event){
+        if(event.relatedTarget){
+           return event.relatedTarget;
+        }else if(event.toElement){
+            return event.toElement;
+        }else if(event.fromElement){
+            return event.fromElement;
+        }else{
+            return null;
+        }
+    },
+    //鼠标按钮 mousedown mouseup
+    getButton : function(){
+        if(document.implementation.hasFeature('MouseEvents',2.0)){
+            //mousedown 和mouseup在DOM事件中 0表示左键 1表示滚轮 2表示右键
+                return event.button;
+        }else{
+            //同样的事件在IE中 将其按照DOM中化为三类
+            switch (event.button){
+                case 0:
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                    return 0;
+                case 2:
+                case 6:
+                    return 2;
+                case 4:
+                    return 1;
+            }
+        }
+    },
+    //鼠标滚轮方向 正为向上  负为向下
+    gerWheelDelta : function (event) {
+        if(event.wheelDelta){
+            //opera浏览器与其他浏览器正负相反 client.engine是检测浏览器的方法
+            return (client.engine.opera && client.engine.opera < 9.5 ?
+            -event.wheelDelta : event.wheelDelta);
+        }else{
+            //firefox浏览器 -3为向上 +3 为向下 因此不仅要转换正负号  还要*40
+            return -event.detail*40
+        }
     }
 };
 
