@@ -28,7 +28,7 @@ var EventUtil ={
 
     //下面的事件都是在获得event的基础之上
     //event
-    gerEvent : function(event){
+    getEvent : function(event){
         return event ?event :window.event;
     },
     //target
