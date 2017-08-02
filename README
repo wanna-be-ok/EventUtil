@@ -1,1 +1,2 @@
 /*DOM和IE的兼容 event、event.target、addEventListener、removeEventListener、stopPropagation、preventDefault*/
+鼠标事件 wheeldetal 鼠标滚轮滚动方向 鼠标单击按键 
