@@ -95,6 +95,14 @@ var EventUtil ={
             //firefox浏览器 -3为向上 +3 为向下 因此不仅要转换正负号  还要*40
             return -event.detail*40
         }
+    },
+    //检测charCode和keyCode
+    getCharCode : function(event){
+        if(typeof event.charCode == "number"){
+            return event.charCode;
+        }else{
+            return event.keyCode;
+        }
     }
 };
 
