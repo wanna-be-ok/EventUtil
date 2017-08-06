@@ -51,7 +51,7 @@ var EventUtil ={
             event.cancelBubble= true;
         }
     },
-    //相关元素 relatedTarget
+    //相关元素 relatedTarget  关于mouseover和mouseout的‘目标元素’和‘相关元素’
     getRelatedTarget : function (event){
         if(event.relatedTarget){
            return event.relatedTarget;
