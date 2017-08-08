@@ -101,7 +101,21 @@ var EventUtil ={
         if(typeof event.charCode == "number"){
             return event.charCode;
         }else{
-            return event.keyCode;
+             return event.keyCode;
+        }
+    },
+    //访问剪贴板中的数据 在IE中是window对象 其他浏览器是event对象，只有在IE中一直存在
+    getClipboardText : function(event){
+        var clipboardText = (event.clipboardData || window.clipboardData);
+        return clipboardData.getData('text');
+    },
+    //getData是用于从剪贴板中取得数据 （IE中 text和URL两种格式）（其他浏览器是MIME格式不过可以用‘text代表text、plain）
+    // setData第一个参数也是数据类型  第二个是要放在剪贴板中的文本
+    setClipboardText : function(event,value){
+        if(event.clipboardData){
+            return event.clipboardData.setData('text/plain',value);
+        }else if(window.clipboardData){
+            return window.clipboardData.setData('text',value);
         }
     }
 };
